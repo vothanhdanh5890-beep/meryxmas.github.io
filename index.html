@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Merry Christmas</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #f7dede;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+        }
+
+        .card {
+            background: #fbeeee;
+            width: 320px;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #d35f5f;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #e8f2ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+        }
+
+        .text {
+            font-size: 14px;
+            color: #777;
+            margin: 8px 0;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            background: #d35f5f;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #bf4f4f;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Merry Christmas! 🎄</h1>
+
+    <div class="avatar">
+        🦉
+    </div>
+
+    <div class="text">(oωo)</div>
+    <div class="text">
+        Click the next button!! (≧◡≦) ♡
+    </div>
+
+    <button onclick="nextPage()">Next!! ^w^</button>
+</div>
+
+<script>
+    function nextPage() {
+        alert("🎁 Chúc bạn Giáng Sinh vui vẻ nha!");
+        // window.location.href = "page2.html"; // nếu muốn chuyển trang
+    }
+</script>
+
+</body>
+</html>
