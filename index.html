@@ -3,90 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <title>Merry Christmas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             height: 100vh;
-            background: #f7dede;
+            background: linear-gradient(#f7dede, #fbeeee);
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+            overflow: hidden;
         }
 
+        /* ===== Snow canvas ===== */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* ===== Card ===== */
         .card {
-            background: #fbeeee;
-            width: 320px;
-            padding: 30px 20px;
-            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 245, 245, 0.95);
+            width: min(90%, 480px);
+            padding: 40px 30px;
+            border-radius: 28px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         h1 {
             color: #d35f5f;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 25px;
         }
 
         .avatar {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 15px;
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            background: #e8f2ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 80px;
+            overflow: hidden;
+            background: #eaf2ff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .text {
-            font-size: 14px;
-            color: #777;
+            font-size: 18px;
+            color: #666;
             margin: 8px 0;
         }
 
         button {
-            margin-top: 15px;
-            padding: 10px 30px;
+            margin-top: 22px;
+            padding: 14px 45px;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px;
             background: #d35f5f;
             color: white;
-            font-size: 16px;
+            font-size: 20px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.25s;
         }
 
         button:hover {
             background: #bf4f4f;
-            transform: scale(1.05);
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 480px) {
+            .avatar {
+                width: 220px;
+                height: 220px;
+            }
+            h1 {
+                font-size: 26px;
+            }
         }
     </style>
 </head>
 <body>
 
+<canvas id="snow"></canvas>
+
 <div class="card">
     <h1>Merry Christmas! 🎄</h1>
 
     <div class="avatar">
-        🦉
+        <img src="https://github.com/vothanhdanh5890-beep/meryxmas.github.io/blob/main/usagixmas.jpg?raw=true" alt="Usagi Xmas">
     </div>
 
     <div class="text">(oωo)</div>
-    <div class="text">
-        Click the next button!! (≧◡≦) ♡
-    </div>
+    <div class="text">Click the next button!! (≧◡≦) ♡</div>
 
     <button onclick="nextPage()">Next!! ^w^</button>
 </div>
 
 <script>
     function nextPage() {
-        alert("🎁 Chúc bạn Giáng Sinh vui vẻ nha!");
-        // window.location.href = "page2.html"; // nếu muốn chuyển trang
+        window.location.href = "xmas2.html";
     }
+
+    /* ===== Snow Effect ===== */
+    const canvas = document.getElementById("snow");
+    const ctx = canvas.getContext("2d");
+
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+
+    const flakes = [];
+
+    for (let i = 0; i < 120; i++) {
+        flakes.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 3 + 1,
+            d: Math.random() + 1
+        });
+    }
+
+    function drawSnow() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+
+        for (let i = 0; i < flakes.length; i++) {
+            let f = flakes[i];
+            ctx.moveTo(f.x, f.y);
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+        }
+
+        ctx.fill();
+        moveSnow();
+    }
+
+    let angle = 0;
+    function moveSnow() {
+        angle += 0.01;
+        for (let i = 0; i < flakes.length; i++) {
+            let f = flakes[i];
+            f.y += Math.pow(f.d, 2) + 1;
+            f.x += Math.sin(angle) * 0.5;
+
+            if (f.y > h) {
+                flakes[i] = {
+                    x: Math.random() * w,
+                    y: 0,
+                    r: f.r,
+                    d: f.d
+                };
+            }
+        }
+    }
+
+    setInterval(drawSnow, 25);
+
+    window.onresize = () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    };
 </script>
 
 </body>
