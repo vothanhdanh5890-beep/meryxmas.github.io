@@ -102,14 +102,14 @@
 <canvas id="snow"></canvas>
 
 <div class="card">
-    <h1>Merry Christmas! 🎄</h1>
+    <h1>Merry Christmas My Pookie! 🎄</h1>
 
     <div class="avatar">
         <img src="https://github.com/vothanhdanh5890-beep/meryxmas.github.io/blob/main/usagixmas.jpg?raw=true" alt="Usagi Xmas">
     </div>
 
-    <div class="text">(oωo)</div>
-    <div class="text">Click the next button!! (≧◡≦) ♡</div>
+    <div class="text">another xmas, we have each other :3</div>
+    <div class="text">Click the next button to continue!! (≧◡≦) ♡</div>
 
     <button onclick="nextPage()">Next!! ^w^</button>
 </div>
@@ -120,63 +120,74 @@
     }
 
     /* ===== Snow Effect ===== */
-    const canvas = document.getElementById("snow");
-    const ctx = canvas.getContext("2d");
+<script>
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
 
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
 
-    const flakes = [];
+const flakes = [];
 
-    for (let i = 0; i < 120; i++) {
-        flakes.push({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: Math.random() * 3 + 1,
-            d: Math.random() + 1
-        });
-    }
+for (let i = 0; i < 80; i++) {
+    flakes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() * 6 + 6,   // ❄ TO HƠN
+        speed: Math.random() * 1.5 + 0.5,
+        angle: Math.random() * Math.PI
+    });
+}
 
-    function drawSnow() {
-        ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = "white";
+function drawSnowflake(x, y, size, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 1.5;
+
+    for (let i = 0; i < 6; i++) {
+        ctx.rotate(Math.PI / 3);
         ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, size);
+        ctx.stroke();
 
-        for (let i = 0; i < flakes.length; i++) {
-            let f = flakes[i];
-            ctx.moveTo(f.x, f.y);
-            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
-        }
+        // nhánh phụ
+        ctx.beginPath();
+        ctx.moveTo(0, size * 0.6);
+        ctx.lineTo(size * 0.15, size * 0.75);
+        ctx.stroke();
 
-        ctx.fill();
-        moveSnow();
+        ctx.beginPath();
+        ctx.moveTo(0, size * 0.6);
+        ctx.lineTo(-size * 0.15, size * 0.75);
+        ctx.stroke();
     }
+    ctx.restore();
+}
 
-    let angle = 0;
-    function moveSnow() {
-        angle += 0.01;
-        for (let i = 0; i < flakes.length; i++) {
-            let f = flakes[i];
-            f.y += Math.pow(f.d, 2) + 1;
-            f.x += Math.sin(angle) * 0.5;
+function drawSnow() {
+    ctx.clearRect(0, 0, w, h);
 
-            if (f.y > h) {
-                flakes[i] = {
-                    x: Math.random() * w,
-                    y: 0,
-                    r: f.r,
-                    d: f.d
-                };
-            }
+    for (let f of flakes) {
+        drawSnowflake(f.x, f.y, f.size, f.angle);
+        f.y += f.speed;
+        f.angle += 0.002;
+
+        if (f.y > h) {
+            f.y = -20;
+            f.x = Math.random() * w;
         }
     }
+}
 
-    setInterval(drawSnow, 25);
+setInterval(drawSnow, 30);
 
-    window.onresize = () => {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-    };
+window.onresize = () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+};
 </script>
 
 </body>
