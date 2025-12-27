@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Our Memories ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#f7dede, #fbeeee);
+    font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+    overflow: hidden;
+}
+
+/* ===== Snow ===== */
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+/* ===== Content ===== */
+.container {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #d35f5f;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+/* ===== Heart Grid ===== */
+.heart {
+    display: grid;
+    grid-template-columns: repeat(5, 90px);
+    gap: 14px;
+    justify-content: center;
+}
+
+/* Heart shape via empty cells */
+.heart .empty { visibility: hidden; }
+
+.month {
+    width: 90px;
+    height: 90px;
+    background: white;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #d35f5f;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: 0.25s;
+}
+
+.month:hover {
+    transform: scale(1.1);
+    background: #ffecec;
+}
+
+/* ===== Next button ===== */
+.next {
+    margin-top: 30px;
+    padding: 12px 36px;
+    border-radius: 25px;
+    border: none;
+    background: #d35f5f;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="snow"></canvas>
+
+<div class="container">
+    <h1>Our Memories :3 💛</h1>
+
+    <!-- Heart shape layout -->
+    <div class="heart">
+        <div class="empty"></div>
+        <a class="month" href="T1.html">T1</a>
+        <div class="empty"></div>
+        <a class="month" href="T2.html">T2</a>
+        <div class="empty"></div>
+
+        <a class="month" href="T3.html">T3</a>
+        <a class="month" href="T4.html">T4</a>
+        <a class="month" href="T5.html">T5</a>
+        <a class="month" href="T6.html">T6</a>
+        <a class="month" href="T7.html">T7</a>
+
+        <div class="empty"></div>
+        <a class="month" href="T8.html">T8</a>
+        <a class="month" href="T9.html">T9</a>
+        <a class="month" href="T10.html">T10</a>
+        <div class="empty"></div>
+
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <a class="month" href="T11.html">T11</a>
+        <div class="empty"></div>
+        <div class="empty"></div>
+
+        <div class="empty"></div>
+        <div class="empty"></div>
+        <a class="month" href="T12.html">T12</a>
+        <div class="empty"></div>
+        <div class="empty"></div>
+    </div>
+
+    <button class="next" onclick="location.href='index.html'">← Back</button>
+</div>
+
+<!-- ===== Snow Script (hoa tuyết) ===== -->
+<script>
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+
+let w = canvas.width = innerWidth;
+let h = canvas.height = innerHeight;
+
+const flakes = [];
+for (let i = 0; i < 80; i++) {
+    flakes.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() * 6 + 6,
+        speed: Math.random() * 1.5 + 0.5,
+        angle: Math.random() * Math.PI
+    });
+}
+
+function snowflake(x,y,s,a){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(a);
+    ctx.strokeStyle="white";
+    ctx.lineWidth=1.5;
+    for(let i=0;i<6;i++){
+        ctx.rotate(Math.PI/3);
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(0,s);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
+
+function draw(){
+    ctx.clearRect(0,0,w,h);
+    flakes.forEach(f=>{
+        snowflake(f.x,f.y,f.size,f.angle);
+        f.y+=f.speed;
+        f.angle+=0.002;
+        if(f.y>h){ f.y=-20; f.x=Math.random()*w; }
+    });
+}
+setInterval(draw,30);
+
+onresize=()=>{ w=canvas.width=innerWidth; h=canvas.height=innerHeight; };
+</script>
+
+</body>
+</html>
