@@ -2,20 +2,28 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Unforgettable <3</title>
+<title>Unforgettable ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+<!-- Google Fonts (chỉ Pacifico, text chính dùng Comic Sans như index) -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:Poppins,sans-serif;
+  font-family:"Comic Sans MS","Segoe UI",sans-serif;
   background:linear-gradient(180deg,#ffeef2,#fff);
   overflow-x:hidden;
+}
+
+/* ===== SNOW ===== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:0;
 }
 
 /* ===== CONTAINER ===== */
@@ -23,6 +31,7 @@ body{
   position:relative;
   min-height:120vh;
   padding-top:100px;
+  z-index:1;
 }
 
 /* ===== POLAROID ===== */
@@ -69,7 +78,7 @@ body{
 .h7{top:50%;left:30%;transform:translate(-50%,-50%) rotate(-8deg)}
 .h8{top:38%;left:38%;transform:translate(-50%,-50%) rotate(6deg)}
 
-/* ===== 4 GÓC (dư tháng) ===== */
+/* ===== 4 GÓC ===== */
 .c1{top:10%;left:10%;transform:rotate(-12deg)}
 .c2{top:10%;right:10%;transform:rotate(10deg)}
 .c3{bottom:10%;left:10%;transform:rotate(8deg)}
@@ -87,28 +96,30 @@ body{
   pointer-events:none;
 }
 
-/* ===== !! EFFECT ===== */
+/* ===== HEART EFFECT ===== */
 .effect{
   position:absolute;
-  font-size:36px;
+  font-size:34px;
   animation:heartbeat 1.2s infinite, float 3s ease-in-out infinite;
   filter:drop-shadow(0 6px 12px rgba(255,77,109,.45));
 }
 
-/* tim đập */
+.e1{top:25%;left:20%}
+.e2{top:30%;right:20%}
+.e3{bottom:25%;left:22%}
+.e4{bottom:30%;right:22%}
+
 @keyframes heartbeat{
   0%{transform:scale(1)}
   30%{transform:scale(1.25)}
   60%{transform:scale(1)}
 }
 
-/* tim bay nhẹ */
 @keyframes float{
   0%{transform:translateY(0)}
   50%{transform:translateY(-10px)}
   100%{transform:translateY(0)}
 }
-
 
 /* ===== NAV ===== */
 .nav{
@@ -118,6 +129,7 @@ body{
   transform:translateX(-50%);
   display:flex;
   gap:20px;
+  z-index:2;
 }
 
 .nav button{
@@ -141,6 +153,8 @@ body{
 
 <body>
 
+<canvas id="snow"></canvas>
+
 <div class="container">
 
 <!-- HEART -->
@@ -153,7 +167,7 @@ body{
 <div class="polaroid h7"><img src="https://picsum.photos/300/400?7"><div class="caption">T7</div></div>
 <div class="polaroid h8"><img src="https://picsum.photos/300/400?8"><div class="caption">T8</div></div>
 
-<!-- 4 GÓC -->
+<!-- CORNERS -->
 <div class="polaroid c1"><img src="https://picsum.photos/300/400?9"><div class="caption">T9</div></div>
 <div class="polaroid c2"><img src="https://picsum.photos/300/400?10"><div class="caption">T10</div></div>
 <div class="polaroid c3"><img src="https://picsum.photos/300/400?11"><div class="caption">T11</div></div>
@@ -161,11 +175,11 @@ body{
 
 <div class="center-text">Our Memories</div>
 
-<!-- !! EFFECT -->
-<div class="effect e1">!!</div>
-<div class="effect e2">!!</div>
-<div class="effect e3">!!</div>
-<div class="effect e4">!!</div>
+<!-- HEART EFFECT -->
+<div class="effect e1">❤️</div>
+<div class="effect e2">❤️</div>
+<div class="effect e3">❤️</div>
+<div class="effect e4">❤️</div>
 
 </div>
 
@@ -173,6 +187,57 @@ body{
   <button onclick="history.back()">← Back</button>
   <button onclick="location.href='T1.html'">Continue →</button>
 </div>
+
+<script>
+/* ===== SNOW EFFECT (same as index) ===== */
+const canvas=document.getElementById("snow");
+const ctx=canvas.getContext("2d");
+let w=canvas.width=window.innerWidth;
+let h=canvas.height=window.innerHeight;
+
+const flakes=[];
+for(let i=0;i<80;i++){
+  flakes.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    size:Math.random()*6+6,
+    speed:Math.random()*1.5+.5,
+    angle:Math.random()*Math.PI
+  });
+}
+
+function drawSnowflake(x,y,s,a){
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.rotate(a);
+  ctx.strokeStyle="white";
+  ctx.lineWidth=1.5;
+  for(let i=0;i<6;i++){
+    ctx.rotate(Math.PI/3);
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(0,s);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawSnow(){
+  ctx.clearRect(0,0,w,h);
+  for(let f of flakes){
+    drawSnowflake(f.x,f.y,f.size,f.angle);
+    f.y+=f.speed;
+    f.angle+=.002;
+    if(f.y>h){f.y=-20;f.x=Math.random()*w;}
+  }
+}
+setInterval(drawSnow,30);
+
+window.onresize=()=>{
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+};
+</script>
 
 </body>
 </html>
