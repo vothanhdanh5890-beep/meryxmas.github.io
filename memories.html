@@ -90,25 +90,25 @@ body{
 /* ===== !! EFFECT ===== */
 .effect{
   position:absolute;
-  font-size:32px;
-  font-weight:700;
-  color:#ff4d6d;
-  animation:shake .6s infinite alternate, blink 1.2s infinite;
+  font-size:36px;
+  animation:heartbeat 1.2s infinite, float 3s ease-in-out infinite;
+  filter:drop-shadow(0 6px 12px rgba(255,77,109,.45));
 }
 
-.e1{top:25%;left:20%}
-.e2{top:30%;right:20%}
-.e3{bottom:25%;left:22%}
-.e4{bottom:30%;right:22%}
+/* tim đập */
+@keyframes heartbeat{
+  0%{transform:scale(1)}
+  30%{transform:scale(1.25)}
+  60%{transform:scale(1)}
+}
 
-@keyframes shake{
-  from{transform:rotate(-5deg)}
-  to{transform:rotate(5deg)}
+/* tim bay nhẹ */
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
 }
-@keyframes blink{
-  0%,100%{opacity:1}
-  50%{opacity:.2}
-}
+
 
 /* ===== NAV ===== */
 .nav{
