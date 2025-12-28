@@ -2,18 +2,17 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Tui, với em</title>
+<title>Unforgettable 💌</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 
 body{
   margin:0;
+  height:100vh;
+  background:linear-gradient(#f7dede,#fbeeee);
   font-family:"Comic Sans MS","Segoe UI",sans-serif;
-  background:linear-gradient(180deg,#ffeef2,#fff);
   overflow:hidden;
 }
 
@@ -28,19 +27,19 @@ canvas{
 .container{
   position:relative;
   width:100%;
-  height:100vh;
+  height:100%;
   z-index:1;
 }
 
 /* ===== POLAROID ===== */
 .polaroid{
   position:absolute;
-  width:120px;
-  height:160px;
+  width:190px;
+  height:240px;
   background:#fff;
-  padding:10px 10px 28px;
-  border-radius:8px;
-  box-shadow:0 12px 25px rgba(0,0,0,.25);
+  padding:12px 12px 34px;
+  border-radius:12px;
+  box-shadow:0 18px 36px rgba(0,0,0,.25);
   transition:.35s;
 }
 
@@ -48,32 +47,40 @@ canvas{
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:4px;
+  border-radius:6px;
 }
 
 .polaroid:hover{
-  transform:scale(1.15) rotate(0deg);
+  transform:scale(1.1) rotate(0deg);
   z-index:5;
 }
 
-/* ===== POSITION ===== */
-.p1{top:10%;left:20%;transform:rotate(-8deg)}
-.p2{top:15%;left:40%;transform:rotate(6deg)}
-.p3{top:10%;right:20%;transform:rotate(-5deg)}
-.p4{top:30%;right:8%;transform:rotate(7deg)}
-.p5{bottom:30%;right:10%;transform:rotate(-6deg)}
-.p6{bottom:10%;right:30%;transform:rotate(5deg)}
-.p7{bottom:12%;left:30%;transform:rotate(-4deg)}
-.p8{bottom:30%;left:8%;transform:rotate(6deg)}
+/* ===== IMAGE POSITIONS (THOÁNG – KHÔNG ĐỤNG NHAU) ===== */
+/* trên */
+.p1{top:4%;left:18%;transform:rotate(-6deg)}
+.p2{top:2%;left:42%;transform:rotate(4deg)}
+.p3{top:4%;right:18%;transform:rotate(-5deg)}
 
-.p9{top:25%;left:8%;transform:rotate(-7deg)}
-.p10{top:40%;left:18%;transform:rotate(5deg)}
-.p11{top:40%;right:18%;transform:rotate(-5deg)}
-.p12{top:25%;right:8%;transform:rotate(6deg)}
-.p13{bottom:40%;right:20%;transform:rotate(-7deg)}
-.p14{bottom:40%;left:20%;transform:rotate(6deg)}
-.p15{bottom:22%;left:40%;transform:rotate(-4deg)}
-.p16{top:22%;left:40%;transform:rotate(5deg)}
+/* phải */
+.p4{top:28%;right:4%;transform:rotate(6deg)}
+.p5{top:56%;right:6%;transform:rotate(-6deg)}
+
+/* dưới */
+.p6{bottom:4%;right:22%;transform:rotate(5deg)}
+.p7{bottom:4%;left:22%;transform:rotate(-5deg)}
+
+/* trái */
+.p8{top:56%;left:6%;transform:rotate(6deg)}
+.p9{top:28%;left:4%;transform:rotate(-6deg)}
+
+/* vòng trong */
+.p10{top:18%;left:30%;transform:rotate(4deg)}
+.p11{top:18%;right:30%;transform:rotate(-4deg)}
+.p12{bottom:18%;right:30%;transform:rotate(4deg)}
+.p13{bottom:18%;left:30%;transform:rotate(-4deg)}
+.p14{top:40%;left:18%;transform:rotate(5deg)}
+.p15{top:40%;right:18%;transform:rotate(-5deg)}
+.p16{bottom:40%;left:50%;transform:translateX(-50%) rotate(3deg)}
 
 /* ===== LETTER ===== */
 .letter-wrap{
@@ -81,28 +88,21 @@ canvas{
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:260px;
-  height:180px;
+  width:380px;
+  height:260px;
   cursor:pointer;
-  perspective:800px;
-  z-index:3;
+  perspective:1000px;
+  z-index:6;
 }
 
 .envelope{
   position:relative;
   width:100%;
   height:100%;
-  background:#ffcad4;
-  border-radius:12px;
-  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  background:rgba(255,245,245,.96);
+  border-radius:26px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
   overflow:hidden;
-}
-
-.envelope::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(135deg,#ff9aaf,#ffcad4);
 }
 
 .flap{
@@ -111,24 +111,23 @@ canvas{
   left:0;
   width:100%;
   height:100%;
-  background:#ff9aaf;
+  background:#f2b8b8;
   clip-path:polygon(0 0,100% 0,50% 55%);
   transform-origin:top;
-  transition:.8s;
+  transition:.9s;
 }
 
 .letter{
   position:absolute;
-  inset:12px;
+  inset:22px;
   background:#fff;
-  border-radius:10px;
-  padding:16px;
-  font-family:Pacifico,cursive;
-  font-size:18px;
-  color:#ff4d6d;
+  border-radius:18px;
+  padding:24px;
   text-align:center;
-  transform:translateY(100%);
-  transition:.8s;
+  font-size:22px;
+  color:#d35f5f;
+  transform:translateY(120%);
+  transition:.9s;
 }
 
 /* OPEN */
@@ -139,27 +138,32 @@ canvas{
   transform:translateY(0);
 }
 
-/* ===== NAV ===== */
+/* ===== NEXT ===== */
 .next{
   position:absolute;
-  bottom:20px;
+  bottom:22px;
   left:50%;
   transform:translateX(-50%);
-  padding:14px 36px;
+  padding:14px 40px;
   border:none;
   border-radius:30px;
-  font-size:18px;
-  font-weight:600;
+  background:#d35f5f;
   color:#fff;
+  font-size:20px;
   cursor:pointer;
-  background:linear-gradient(135deg,#ff758f,#ff4d6d);
-  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  transition:.25s;
 }
 
-/* MOBILE */
+.next:hover{
+  background:#bf4f4f;
+  transform:translateX(-50%) scale(1.08);
+}
+
+/* ===== MOBILE ===== */
 @media(max-width:768px){
-  .polaroid{width:90px;height:120px}
-  .letter-wrap{width:220px;height:160px}
+  .polaroid{width:130px;height:170px}
+  .letter-wrap{width:300px;height:220px}
+  .letter{font-size:18px}
 }
 </style>
 </head>
@@ -194,22 +198,22 @@ canvas{
   <div class="envelope">
     <div class="flap"></div>
     <div class="letter">
-      Dear babi 💕<br><br>
-      Another memory<br>
-      Another smile<br>
-      Another us ✨
+      Merry Christmas <br>
+      My Pookie 🎄<br><br>
+      another xmas,<br>
+      we have each other ♡
     </div>
   </div>
 </div>
 
-<button class="next" onclick="location.href='next.html'">
+<button class="next" onclick="location.href='memories.html'">
   Next babi →
 </button>
 
 </div>
 
 <script>
-/* ===== SNOW ===== */
+/* ===== SNOW EFFECT (GIỮ NGUYÊN) ===== */
 const canvas=document.getElementById("snow");
 const ctx=canvas.getContext("2d");
 let w=canvas.width=innerWidth;
@@ -220,34 +224,38 @@ for(let i=0;i<80;i++){
   flakes.push({
     x:Math.random()*w,
     y:Math.random()*h,
-    s:Math.random()*6+6,
-    v:Math.random()*1.5+.5,
-    a:Math.random()*Math.PI
+    size:Math.random()*6+6,
+    speed:Math.random()*1.5+.5,
+    angle:Math.random()*Math.PI
   });
 }
 
-function draw(){
+function drawSnowflake(x,y,s,a){
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.rotate(a);
+  ctx.strokeStyle="white";
+  ctx.lineWidth=1.5;
+  for(let i=0;i<6;i++){
+    ctx.rotate(Math.PI/3);
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.lineTo(0,s);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawSnow(){
   ctx.clearRect(0,0,w,h);
   flakes.forEach(f=>{
-    ctx.save();
-    ctx.translate(f.x,f.y);
-    ctx.rotate(f.a);
-    ctx.strokeStyle="white";
-    ctx.lineWidth=1.5;
-    for(let i=0;i<6;i++){
-      ctx.rotate(Math.PI/3);
-      ctx.beginPath();
-      ctx.moveTo(0,0);
-      ctx.lineTo(0,f.s);
-      ctx.stroke();
-    }
-    ctx.restore();
-    f.y+=f.v;
-    f.a+=.002;
+    drawSnowflake(f.x,f.y,f.size,f.angle);
+    f.y+=f.speed;
+    f.angle+=.002;
     if(f.y>h){f.y=-20;f.x=Math.random()*w}
   });
 }
-setInterval(draw,30);
+setInterval(drawSnow,30);
 onresize=()=>{w=canvas.width=innerWidth;h=canvas.height=innerHeight}
 </script>
 
