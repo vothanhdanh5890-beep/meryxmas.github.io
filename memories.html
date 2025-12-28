@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Unforgettable ❤️</title>
+<title>Tui, với em</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -14,34 +14,33 @@ body{
   margin:0;
   font-family:"Comic Sans MS","Segoe UI",sans-serif;
   background:linear-gradient(180deg,#ffeef2,#fff);
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 /* ===== SNOW ===== */
 canvas{
   position:fixed;
-  top:0;
-  left:0;
+  inset:0;
   z-index:0;
 }
 
 /* ===== CONTAINER ===== */
 .container{
   position:relative;
-  min-height:120vh;
-  padding-top:100px;
+  width:100%;
+  height:100vh;
   z-index:1;
 }
 
 /* ===== POLAROID ===== */
 .polaroid{
   position:absolute;
-  width:140px;
-  height:180px;
+  width:120px;
+  height:160px;
   background:#fff;
-  padding:10px 10px 30px;
+  padding:10px 10px 28px;
   border-radius:8px;
-  box-shadow:0 15px 30px rgba(0,0,0,.25);
+  box-shadow:0 12px 25px rgba(0,0,0,.25);
   transition:.35s;
 }
 
@@ -53,88 +52,103 @@ canvas{
 }
 
 .polaroid:hover{
-  transform:translate(-50%,-50%) scale(1.1) rotate(0deg);
+  transform:scale(1.15) rotate(0deg);
   z-index:5;
 }
 
-/* ===== CAPTION ===== */
-.caption{
-  position:absolute;
-  bottom:6px;
-  width:100%;
-  text-align:center;
-  font-family:Pacifico,cursive;
-  color:#e63946;
-}
+/* ===== POSITION ===== */
+.p1{top:10%;left:20%;transform:rotate(-8deg)}
+.p2{top:15%;left:40%;transform:rotate(6deg)}
+.p3{top:10%;right:20%;transform:rotate(-5deg)}
+.p4{top:30%;right:8%;transform:rotate(7deg)}
+.p5{bottom:30%;right:10%;transform:rotate(-6deg)}
+.p6{bottom:10%;right:30%;transform:rotate(5deg)}
+.p7{bottom:12%;left:30%;transform:rotate(-4deg)}
+.p8{bottom:30%;left:8%;transform:rotate(6deg)}
 
-/* ===== HEART (8 ảnh) ===== */
-.h1{top:30%;left:50%;transform:translate(-50%,-50%) rotate(-6deg)}
-.h2{top:38%;left:62%;transform:translate(-50%,-50%) rotate(8deg)}
-.h3{top:50%;left:70%;transform:translate(-50%,-50%) rotate(6deg)}
-.h4{top:62%;left:58%;transform:translate(-50%,-50%) rotate(3deg)}
-.h5{top:70%;left:50%;transform:translate(-50%,-50%) rotate(-2deg)}
-.h6{top:62%;left:42%;transform:translate(-50%,-50%) rotate(-5deg)}
-.h7{top:50%;left:30%;transform:translate(-50%,-50%) rotate(-8deg)}
-.h8{top:38%;left:38%;transform:translate(-50%,-50%) rotate(6deg)}
+.p9{top:25%;left:8%;transform:rotate(-7deg)}
+.p10{top:40%;left:18%;transform:rotate(5deg)}
+.p11{top:40%;right:18%;transform:rotate(-5deg)}
+.p12{top:25%;right:8%;transform:rotate(6deg)}
+.p13{bottom:40%;right:20%;transform:rotate(-7deg)}
+.p14{bottom:40%;left:20%;transform:rotate(6deg)}
+.p15{bottom:22%;left:40%;transform:rotate(-4deg)}
+.p16{top:22%;left:40%;transform:rotate(5deg)}
 
-/* ===== 4 GÓC ===== */
-.c1{top:10%;left:10%;transform:rotate(-12deg)}
-.c2{top:10%;right:10%;transform:rotate(10deg)}
-.c3{bottom:10%;left:10%;transform:rotate(8deg)}
-.c4{bottom:10%;right:10%;transform:rotate(-10deg)}
-
-/* ===== CENTER TEXT ===== */
-.center-text{
+/* ===== LETTER ===== */
+.letter-wrap{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-family:Pacifico,cursive;
-  font-size:52px;
-  color:#ff4d6d;
-  pointer-events:none;
+  width:260px;
+  height:180px;
+  cursor:pointer;
+  perspective:800px;
+  z-index:3;
 }
 
-/* ===== HEART EFFECT ===== */
-.effect{
+.envelope{
+  position:relative;
+  width:100%;
+  height:100%;
+  background:#ffcad4;
+  border-radius:12px;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+
+.envelope::before{
+  content:"";
   position:absolute;
-  font-size:34px;
-  animation:heartbeat 1.2s infinite, float 3s ease-in-out infinite;
-  filter:drop-shadow(0 6px 12px rgba(255,77,109,.45));
+  inset:0;
+  background:linear-gradient(135deg,#ff9aaf,#ffcad4);
 }
 
-.e1{top:25%;left:20%}
-.e2{top:30%;right:20%}
-.e3{bottom:25%;left:22%}
-.e4{bottom:30%;right:22%}
-
-@keyframes heartbeat{
-  0%{transform:scale(1)}
-  30%{transform:scale(1.25)}
-  60%{transform:scale(1)}
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#ff9aaf;
+  clip-path:polygon(0 0,100% 0,50% 55%);
+  transform-origin:top;
+  transition:.8s;
 }
 
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-  100%{transform:translateY(0)}
+.letter{
+  position:absolute;
+  inset:12px;
+  background:#fff;
+  border-radius:10px;
+  padding:16px;
+  font-family:Pacifico,cursive;
+  font-size:18px;
+  color:#ff4d6d;
+  text-align:center;
+  transform:translateY(100%);
+  transition:.8s;
+}
+
+/* OPEN */
+.open .flap{
+  transform:rotateX(180deg);
+}
+.open .letter{
+  transform:translateY(0);
 }
 
 /* ===== NAV ===== */
-.nav{
-  position:fixed;
+.next{
+  position:absolute;
   bottom:20px;
   left:50%;
   transform:translateX(-50%);
-  display:flex;
-  gap:20px;
-  z-index:2;
-}
-
-.nav button{
-  padding:12px 26px;
+  padding:14px 36px;
   border:none;
   border-radius:30px;
+  font-size:18px;
   font-weight:600;
   color:#fff;
   cursor:pointer;
@@ -144,8 +158,8 @@ canvas{
 
 /* MOBILE */
 @media(max-width:768px){
-  .polaroid{width:110px;height:140px}
-  .center-text{font-size:34px}
+  .polaroid{width:90px;height:120px}
+  .letter-wrap{width:220px;height:160px}
 }
 </style>
 </head>
@@ -156,86 +170,85 @@ canvas{
 
 <div class="container">
 
-<!-- HEART -->
-<div class="polaroid h1"><img src="https://picsum.photos/300/400?1"><div class="caption">T1</div></div>
-<div class="polaroid h2"><img src="https://picsum.photos/300/400?2"><div class="caption">T2</div></div>
-<div class="polaroid h3"><img src="https://picsum.photos/300/400?3"><div class="caption">T3</div></div>
-<div class="polaroid h4"><img src="https://picsum.photos/300/400?4"><div class="caption">T4</div></div>
-<div class="polaroid h5"><img src="https://picsum.photos/300/400?5"><div class="caption">T5</div></div>
-<div class="polaroid h6"><img src="https://picsum.photos/300/400?6"><div class="caption">T6</div></div>
-<div class="polaroid h7"><img src="https://picsum.photos/300/400?7"><div class="caption">T7</div></div>
-<div class="polaroid h8"><img src="https://picsum.photos/300/400?8"><div class="caption">T8</div></div>
+<!-- IMAGES -->
+<div class="polaroid p1"><img src="11.jpg"></div>
+<div class="polaroid p2"><img src="12.jpg"></div>
+<div class="polaroid p3"><img src="13.jpg"></div>
+<div class="polaroid p4"><img src="14.jpg"></div>
+<div class="polaroid p5"><img src="15.jpg"></div>
+<div class="polaroid p6"><img src="16.jpg"></div>
+<div class="polaroid p7"><img src="17.jpg"></div>
+<div class="polaroid p8"><img src="18.jpg"></div>
 
-<!-- CORNERS -->
-<div class="polaroid c1"><img src="https://picsum.photos/300/400?9"><div class="caption">T9</div></div>
-<div class="polaroid c2"><img src="https://picsum.photos/300/400?10"><div class="caption">T10</div></div>
-<div class="polaroid c3"><img src="https://picsum.photos/300/400?11"><div class="caption">T11</div></div>
-<div class="polaroid c4"><img src="https://picsum.photos/300/400?12"><div class="caption">T12</div></div>
+<div class="polaroid p9"><img src="21.jpg"></div>
+<div class="polaroid p10"><img src="22.jpg"></div>
+<div class="polaroid p11"><img src="23.jpg"></div>
+<div class="polaroid p12"><img src="24.jpg"></div>
+<div class="polaroid p13"><img src="25.jpg"></div>
+<div class="polaroid p14"><img src="26.jpg"></div>
+<div class="polaroid p15"><img src="27.jpg"></div>
+<div class="polaroid p16"><img src="28.jpg"></div>
 
-<div class="center-text">Our Memories</div>
-
-<!-- HEART EFFECT -->
-<div class="effect e1">❤️</div>
-<div class="effect e2">❤️</div>
-<div class="effect e3">❤️</div>
-<div class="effect e4">❤️</div>
-
+<!-- LETTER -->
+<div class="letter-wrap" onclick="this.classList.toggle('open')">
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="letter">
+      Dear babi 💕<br><br>
+      Another memory<br>
+      Another smile<br>
+      Another us ✨
+    </div>
+  </div>
 </div>
 
-<div class="nav">
-  <button onclick="history.back()">← Back</button>
-  <button onclick="location.href='T1.html'">Continue →</button>
+<button class="next" onclick="location.href='next.html'">
+  Next babi →
+</button>
+
 </div>
 
 <script>
-/* ===== SNOW EFFECT (same as index) ===== */
+/* ===== SNOW ===== */
 const canvas=document.getElementById("snow");
 const ctx=canvas.getContext("2d");
-let w=canvas.width=window.innerWidth;
-let h=canvas.height=window.innerHeight;
+let w=canvas.width=innerWidth;
+let h=canvas.height=innerHeight;
 
 const flakes=[];
 for(let i=0;i<80;i++){
   flakes.push({
     x:Math.random()*w,
     y:Math.random()*h,
-    size:Math.random()*6+6,
-    speed:Math.random()*1.5+.5,
-    angle:Math.random()*Math.PI
+    s:Math.random()*6+6,
+    v:Math.random()*1.5+.5,
+    a:Math.random()*Math.PI
   });
 }
 
-function drawSnowflake(x,y,s,a){
-  ctx.save();
-  ctx.translate(x,y);
-  ctx.rotate(a);
-  ctx.strokeStyle="white";
-  ctx.lineWidth=1.5;
-  for(let i=0;i<6;i++){
-    ctx.rotate(Math.PI/3);
-    ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(0,s);
-    ctx.stroke();
-  }
-  ctx.restore();
-}
-
-function drawSnow(){
+function draw(){
   ctx.clearRect(0,0,w,h);
-  for(let f of flakes){
-    drawSnowflake(f.x,f.y,f.size,f.angle);
-    f.y+=f.speed;
-    f.angle+=.002;
-    if(f.y>h){f.y=-20;f.x=Math.random()*w;}
-  }
+  flakes.forEach(f=>{
+    ctx.save();
+    ctx.translate(f.x,f.y);
+    ctx.rotate(f.a);
+    ctx.strokeStyle="white";
+    ctx.lineWidth=1.5;
+    for(let i=0;i<6;i++){
+      ctx.rotate(Math.PI/3);
+      ctx.beginPath();
+      ctx.moveTo(0,0);
+      ctx.lineTo(0,f.s);
+      ctx.stroke();
+    }
+    ctx.restore();
+    f.y+=f.v;
+    f.a+=.002;
+    if(f.y>h){f.y=-20;f.x=Math.random()*w}
+  });
 }
-setInterval(drawSnow,30);
-
-window.onresize=()=>{
-  w=canvas.width=window.innerWidth;
-  h=canvas.height=window.innerHeight;
-};
+setInterval(draw,30);
+onresize=()=>{w=canvas.width=innerWidth;h=canvas.height=innerHeight}
 </script>
 
 </body>
