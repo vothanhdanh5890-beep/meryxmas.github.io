@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Try Again</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(#f7dede,#fbeeee);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:"Comic Sans MS","Segoe UI",sans-serif;
+    overflow:hidden;
+}
+
+/* ===== Snow ===== */
+canvas{
+    position:fixed;
+    top:0; left:0;
+    z-index:0;
+}
+
+/* ===== Card ===== */
+.card{
+    position:relative;
+    z-index:1;
+    background:rgba(255,245,245,0.95);
+    width:min(90%,420px);
+    padding:42px 30px;
+    border-radius:28px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ===== Text ===== */
+.text{
+    font-size:22px;
+    color:#555;
+    margin-bottom:28px;
+}
+
+/* ===== Button ===== */
+button{
+    padding:14px 42px;
+    border:none;
+    border-radius:30px;
+    background:#d35f5f;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+button:hover{
+    background:#bf4f4f;
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="snow"></canvas>
+
+<div class="card">
+    <div class="text">
+        Awh… Let’s try again, Please..? &gt;﹏&lt;
+    </div>
+    <button onclick="again()">Again..?</button>
+</div>
+
+<script>
+function again(){
+    window.location.href = "T1.html";
+}
+
+/* ===== Snow Effect ===== */
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+const flakes=[];
+for(let i=0;i<80;i++){
+    flakes.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        size:Math.random()*6+6,
+        speed:Math.random()*1.5+0.5,
+        angle:Math.random()*Math.PI
+    });
+}
+
+function drawSnowflake(x,y,size,angle){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(angle);
+    ctx.strokeStyle="white";
+    ctx.lineWidth=1.5;
+
+    for(let i=0;i<6;i++){
+        ctx.rotate(Math.P
 
