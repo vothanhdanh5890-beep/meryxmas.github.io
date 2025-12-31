@@ -97,16 +97,13 @@
         }
     </style>
 </head>
+
 <body>
 
 <canvas id="snow"></canvas>
 
 <div class="card">
-  <h1>
-    Merry Christmas <br>
-    <span style="font-size:0.85em;">My Pookie! 🎄</span>
-  </h1>
-</div>
+    <h1>Merry Christmas My Pookie! 🎄</h1>
 
     <div class="avatar">
         <img src="https://github.com/vothanhdanh5890-beep/meryxmas.github.io/blob/main/usagixmas.jpg?raw=true" alt="Usagi Xmas">
@@ -117,13 +114,13 @@
 
     <button onclick="nextPage()">Next!! ^w^</button>
 </div>
-    
+
 <audio id="bgm" src="Last Christmas.mp3" loop></audio>
-    
+
 <script>
-    function nextPage() {
-        window.location.href = "memories.html";
-    }
+function nextPage() {
+    window.location.href = "memories.html";
+}
 
 /* ===== Snow Effect ===== */
 const canvas = document.getElementById("snow");
@@ -133,7 +130,6 @@ let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
 
 const flakes = [];
-
 for (let i = 0; i < 80; i++) {
     flakes.push({
         x: Math.random() * w,
@@ -173,12 +169,10 @@ function drawSnowflake(x, y, size, angle) {
 
 function drawSnow() {
     ctx.clearRect(0, 0, w, h);
-
     for (let f of flakes) {
         drawSnowflake(f.x, f.y, f.size, f.angle);
         f.y += f.speed;
         f.angle += 0.002;
-
         if (f.y > h) {
             f.y = -20;
             f.x = Math.random() * w;
