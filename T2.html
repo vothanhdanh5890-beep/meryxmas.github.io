@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Merry Christmas Pookie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(#f7dede,#fbeeee);
+    font-family:"Comic Sans MS","Segoe UI",sans-serif;
+    overflow-x:hidden;
+}
+
+/* ===== Snow ===== */
+canvas{
+    position:fixed;
+    top:0; left:0;
+    z-index:0;
+}
+
+/* ===== Layout ===== */
+.wrapper{
+    position:relative;
+    z-index:1;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:60px 30px;
+    gap:40px;
+}
+
+/* ===== Polaroid columns ===== */
+.column{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+}
+
+.polaroid{
+    width:180px;
+    background:#fff;
+    padding:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.18);
+}
+
+.polaroid img{
+    width:100%;
+    display:block;
+}
+
+/* ===== Letter ===== */
+.letter-box{
+    max-width:720px;
+    background:rgba(255,245,245,0.96);
+    padding:40px 42px;
+    border-radius:24px;
+    box-shadow:0 20px 45px rgba(0,0,0,0.18);
+}
+
+.title{
+    text-align:center;
+    color:#c94f4f;
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.icons{
+    text-align:center;
+    font-size:26px;
+    margin-bottom:26px;
+}
+
+.letter{
+    font-size:18px;
+    line-height:1.75;
+    color:#444;
+    white-space:pre-line;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:1100px){
+    .polaroid{width:150px;}
+}
+@media(max-width:900px){
+    .column{display:none;}
+    .letter-box{margin:auto;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="snow"></canvas>
+
+<div class="wrapper">
+
+    <!-- LEFT -->
+    <div class="column">
+        <div class="polaroid"><img src="11.jpg"></div>
+        <div class="polaroid"><img src="12.jpg"></div>
+        <div class="polaroid"><img src="13.jpg"></div>
+        <div class="polaroid"><img src="14.jpg"></div>
+        <div class="polaroid"><img src="15.jpg"></div>
+        <div class="polaroid"><img src="16.jpg"></div>
+        <div class="polaroid"><img src="17.jpg"></div>
+        <div class="polaroid"><img src="18.jpg"></div>
+    </div>
+
+    <!-- LETTER -->
+    <div class="letter-box">
+        <div class="title">💌 Merry Christmas Pookie!!</div>
+        <div class="icons">🎄 ❤️ 🎄</div>
+
+        <div class="letter">
+Gửi em my,
+
+Vậy là một đêm nữa mình đón giao thừa cùng với nhau rồi đó bé my ơi. Quãng thời gian qua, tui không biết nữa, tui không biết dùng từ gì để diễn tả hết đống cảm xúc này nữa. Trong mqh chúng mình có nhiều hơn là những lúc vui lúc buồn. Tụi mình từ người lạ, đến những kẻ “khúm núm” nói yêu nhưng không thật sự hiểu nó, rồi cả “tình yêu kẹo mút kid kid” tới “tập làm người lớn” nữa (ôi ngại thế). Mình đã cùng nhau làm rất nhiều việc, là một phần trong cuộc sống của nhau, chỗ tựa tinh thần..
+
+Tui rất biết ơn vì tất cả những điều em làm cho tui. Mặc dù câu này nghe nó văn mẫu =))) nhưng mà tui thật sự nhớ hết những điều mà em đã làm cho tui. Em giúp tui biết lắng nghe hơn, biết dịu dàng hơn, calm calm, em cho tui một điểm tựa mỗi lúc tui không kiểm soát được bản thân mình, em cho tui cái quý giá nhất của một người con gái, em cho tui nhiều cơ hội để sửa sai mặc dù tui vẫn hay lầm đường. Em biết không, sự nhiệt huyết của em, hơn tất cả, đã mang lại “rất nhiều” cho cuộc đời tui, em cho tui niềm hi vọng về một chuyện tình đẹp, cho phép tui dám mơ về tương lai của hai đứa sau này – điều mà tui không dám nghĩ đến trước đây..
+
+Tui biết tui vẫn còn nhiều thiếu sót. Tui hay đi trễ. Tui hay la em. Tui hay trút giận vô cớ lên em với mqh khác dù em không có lỗi. Tui vô tình nặng tay với em. Tui không quan tâm đến cảm xúc của em. Tui xin lỗi em, lần này thôi, tui đang và sẽ hoàn thiện, không để em phiền lòng. Hihi, mong một ngày nào đó em sẽ nhìn lại và bất ngờ vì sự thay đổi của thằng chồng mình &lt;3
+
+Nhân dịp giáng sinh, cũng như đánh dấu một năm mới sang trang, tui chúc em tất cả.
+I wish you the best, wish u wealth, wish u health and more importantly, I wish u love.
+Năm nay sẽ quan trọng lắm, cùng nhau có được những thứ mình mong nhe my.. hihi
+
+Yêu em, always, all ways.
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="column">
+        <div class="polaroid"><img src="21.jpg"></div>
+        <div class="polaroid"><img src="22.jpg"></div>
+        <div class="polaroid"><img src="23.jpg"></div>
+        <div class="polaroid"><img src="24.jpg"></div>
+        <div class="polaroid"><img src="25.jpg"></div>
+        <div class="polaroid"><img src="26.jpg"></div>
+        <div class="polaroid"><img src="27.jpg"></div>
+        <div class="polaroid"><img src="28.jpg"></div>
+    </div>
+
+</div>
+
+<script>
+const canvas=document.getElementById("snow");
+const ctx=canvas.getContext("2d");
+let w=canvas.width=window.innerWidth;
+let h=canvas.height=window.innerHeight;
+
+const flakes=[];
+for(let i=0;i<90;i++){
+    flakes.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        size:Math.random()*6+6,
+        speed:Math.random()*1.5+0.5,
+        angle:Math.random()*Math.PI
+    });
+}
+
+function drawSnowflake(x,y,size,angle){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(angle);
+    ctx.strokeStyle="white";
+    ctx.lineWidth=1.5;
+    for(let i=0;i<6;i++){
+        ctx.rotate(Math.PI/3);
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(0,size);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
+
+function snow(){
+    ctx.clearRect(0,0,w,h);
+    flakes.forEach(f=>{
+        drawSnowflake(f.x,f.y,f.size,f.angle);
+        f.y+=f.speed;
+        f.angle+=0.002;
+        if(f.y>h){f.y=-20;f.x=Math.random()*w;}
+    });
+}
+setInterval(snow,30);
+window.onresize=()=>{w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;}
+</script>
+
+</body>
+</html>
