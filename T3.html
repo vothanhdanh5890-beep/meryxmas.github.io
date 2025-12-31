@@ -77,33 +77,76 @@ button:hover{
 
 <script>
 function again(){
-    window.location.href = "T1.html";
+    window.location.href = "T2.html";
 }
 
 /* ===== Snow Effect ===== */
 const canvas = document.getElementById("snow");
 const ctx = canvas.getContext("2d");
+
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
 
-const flakes=[];
-for(let i=0;i<80;i++){
+const flakes = [];
+for (let i = 0; i < 80; i++) {
     flakes.push({
-        x:Math.random()*w,
-        y:Math.random()*h,
-        size:Math.random()*6+6,
-        speed:Math.random()*1.5+0.5,
-        angle:Math.random()*Math.PI
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() * 6 + 6,
+        speed: Math.random() * 1.5 + 0.5,
+        angle: Math.random() * Math.PI
     });
 }
 
-function drawSnowflake(x,y,size,angle){
+function drawSnowflake(x, y, size, angle) {
     ctx.save();
-    ctx.translate(x,y);
+    ctx.translate(x, y);
     ctx.rotate(angle);
-    ctx.strokeStyle="white";
-    ctx.lineWidth=1.5;
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 1.5;
 
-    for(let i=0;i<6;i++){
-        ctx.rotate(Math.P
+    for (let i = 0; i < 6; i++) {
+        ctx.rotate(Math.PI / 3);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, size);
+        ctx.stroke();
 
+        ctx.beginPath();
+        ctx.moveTo(0, size * 0.6);
+        ctx.lineTo(size * 0.15, size * 0.75);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0, size * 0.6);
+        ctx.lineTo(-size * 0.15, size * 0.75);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
+
+function drawSnow() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (let f of flakes) {
+        drawSnowflake(f.x, f.y, f.size, f.angle);
+        f.y += f.speed;
+        f.angle += 0.002;
+
+        if (f.y > h) {
+            f.y = -20;
+            f.x = Math.random() * w;
+        }
+    }
+}
+
+setInterval(drawSnow, 30);
+
+window.onresize = () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+};
+</script>
+
+</body>
+</html>
