@@ -2,168 +2,79 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Unforgettable 💌</title>
+<title>A Letter For You</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 *{box-sizing:border-box}
 
 body{
-  margin:0;
-  height:100vh;
-  background:linear-gradient(#f7dede,#fbeeee);
-  font-family:"Comic Sans MS","Segoe UI",sans-serif;
-  overflow:hidden;
+    margin:0;
+    height:100vh;
+    background:linear-gradient(#f7dede,#fbeeee);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:"Comic Sans MS","Segoe UI",sans-serif;
+    overflow:hidden;
 }
 
-/* ===== SNOW ===== */
+/* ===== Snow ===== */
 canvas{
-  position:fixed;
-  inset:0;
-  z-index:0;
+    position:fixed;
+    top:0; left:0;
+    z-index:0;
 }
 
-/* ===== CONTAINER ===== */
-.container{
-  position:relative;
-  width:100%;
-  height:100%;
-  z-index:1;
+/* ===== Card ===== */
+.card{
+    position:relative;
+    z-index:1;
+    background:rgba(255,245,245,0.95);
+    width:min(90%,420px);
+    padding:40px 30px;
+    border-radius:28px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* ===== POLAROID ===== */
-.polaroid{
-  position:absolute;
-  width:190px;
-  height:240px;
-  background:#fff;
-  padding:12px 12px 34px;
-  border-radius:12px;
-  box-shadow:0 18px 36px rgba(0,0,0,.25);
-  transition:.35s;
+/* ===== Icon ===== */
+.icon{
+    width:110px;
+    height:110px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    background:#f3caca;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    font-size:48px;
+    color:#b94b4b;
 }
 
-.polaroid img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:6px;
+/* ===== Text ===== */
+.text{
+    font-size:20px;
+    color:#555;
+    margin-bottom:28px;
 }
 
-.polaroid:hover{
-  transform:scale(1.1) rotate(0deg);
-  z-index:5;
+/* ===== Button ===== */
+button{
+    padding:14px 46px;
+    border:none;
+    border-radius:30px;
+    background:#d35f5f;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    transition:0.25s;
 }
 
-/* ===== IMAGE POSITIONS (THOÁNG – KHÔNG ĐỤNG NHAU) ===== */
-/* trên */
-.p1{top:4%;left:18%;transform:rotate(-6deg)}
-.p2{top:2%;left:42%;transform:rotate(4deg)}
-.p3{top:4%;right:18%;transform:rotate(-5deg)}
-
-/* phải */
-.p4{top:28%;right:4%;transform:rotate(6deg)}
-.p5{top:56%;right:6%;transform:rotate(-6deg)}
-
-/* dưới */
-.p6{bottom:4%;right:22%;transform:rotate(5deg)}
-.p7{bottom:4%;left:22%;transform:rotate(-5deg)}
-
-/* trái */
-.p8{top:56%;left:6%;transform:rotate(6deg)}
-.p9{top:28%;left:4%;transform:rotate(-6deg)}
-
-/* vòng trong */
-.p10{top:18%;left:30%;transform:rotate(4deg)}
-.p11{top:18%;right:30%;transform:rotate(-4deg)}
-.p12{bottom:18%;right:30%;transform:rotate(4deg)}
-.p13{bottom:18%;left:30%;transform:rotate(-4deg)}
-.p14{top:40%;left:18%;transform:rotate(5deg)}
-.p15{top:40%;right:18%;transform:rotate(-5deg)}
-.p16{bottom:40%;left:50%;transform:translateX(-50%) rotate(3deg)}
-
-/* ===== LETTER ===== */
-.letter-wrap{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:380px;
-  height:260px;
-  cursor:pointer;
-  perspective:1000px;
-  z-index:6;
-}
-
-.envelope{
-  position:relative;
-  width:100%;
-  height:100%;
-  background:rgba(255,245,245,.96);
-  border-radius:26px;
-  box-shadow:0 25px 50px rgba(0,0,0,.25);
-  overflow:hidden;
-}
-
-.flap{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#f2b8b8;
-  clip-path:polygon(0 0,100% 0,50% 55%);
-  transform-origin:top;
-  transition:.9s;
-}
-
-.letter{
-  position:absolute;
-  inset:22px;
-  background:#fff;
-  border-radius:18px;
-  padding:24px;
-  text-align:center;
-  font-size:22px;
-  color:#d35f5f;
-  transform:translateY(120%);
-  transition:.9s;
-}
-
-/* OPEN */
-.open .flap{
-  transform:rotateX(180deg);
-}
-.open .letter{
-  transform:translateY(0);
-}
-
-/* ===== NEXT ===== */
-.next{
-  position:absolute;
-  bottom:22px;
-  left:50%;
-  transform:translateX(-50%);
-  padding:14px 40px;
-  border:none;
-  border-radius:30px;
-  background:#d35f5f;
-  color:#fff;
-  font-size:20px;
-  cursor:pointer;
-  transition:.25s;
-}
-
-.next:hover{
-  background:#bf4f4f;
-  transform:translateX(-50%) scale(1.08);
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  .polaroid{width:130px;height:170px}
-  .letter-wrap{width:300px;height:220px}
-  .letter{font-size:18px}
+button:hover{
+    background:#bf4f4f;
+    transform:scale(1.08);
 }
 </style>
 </head>
@@ -172,91 +83,79 @@ canvas{
 
 <canvas id="snow"></canvas>
 
-<div class="container">
-
-<!-- IMAGES -->
-<div class="polaroid p1"><img src="11.jpg"></div>
-<div class="polaroid p2"><img src="12.jpg"></div>
-<div class="polaroid p3"><img src="13.jpg"></div>
-<div class="polaroid p4"><img src="14.jpg"></div>
-<div class="polaroid p5"><img src="15.jpg"></div>
-<div class="polaroid p6"><img src="16.jpg"></div>
-<div class="polaroid p7"><img src="17.jpg"></div>
-<div class="polaroid p8"><img src="18.jpg"></div>
-
-<div class="polaroid p9"><img src="21.jpg"></div>
-<div class="polaroid p10"><img src="22.jpg"></div>
-<div class="polaroid p11"><img src="23.jpg"></div>
-<div class="polaroid p12"><img src="24.jpg"></div>
-<div class="polaroid p13"><img src="25.jpg"></div>
-<div class="polaroid p14"><img src="26.jpg"></div>
-<div class="polaroid p15"><img src="27.jpg"></div>
-<div class="polaroid p16"><img src="28.jpg"></div>
-
-<!-- LETTER -->
-<div class="letter-wrap" onclick="this.classList.toggle('open')">
-  <div class="envelope">
-    <div class="flap"></div>
-    <div class="letter">
-      Merry Christmas <br>
-      My Pookie 🎄<br><br>
-      another xmas,<br>
-      we have each other ♡
-    </div>
-  </div>
-</div>
-
-<button class="next" onclick="location.href='memories.html'">
-  Next babi →
-</button>
-
+<div class="card">
+    <div class="icon">✉️</div>
+    <div class="text">I wrote a letter for you…</div>
+    <button onclick="nextPage()">Next →</button>
 </div>
 
 <script>
-/* ===== SNOW EFFECT (GIỮ NGUYÊN) ===== */
-const canvas=document.getElementById("snow");
-const ctx=canvas.getContext("2d");
-let w=canvas.width=innerWidth;
-let h=canvas.height=innerHeight;
+function nextPage(){
+    window.location.href = "T1.html";
+}
+
+/* ===== Snow Effect ===== */
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
 
 const flakes=[];
 for(let i=0;i<80;i++){
-  flakes.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    size:Math.random()*6+6,
-    speed:Math.random()*1.5+.5,
-    angle:Math.random()*Math.PI
-  });
+    flakes.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        size:Math.random()*6+6,
+        speed:Math.random()*1.5+0.5,
+        angle:Math.random()*Math.PI
+    });
 }
 
-function drawSnowflake(x,y,s,a){
-  ctx.save();
-  ctx.translate(x,y);
-  ctx.rotate(a);
-  ctx.strokeStyle="white";
-  ctx.lineWidth=1.5;
-  for(let i=0;i<6;i++){
-    ctx.rotate(Math.PI/3);
-    ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(0,s);
-    ctx.stroke();
-  }
-  ctx.restore();
+function drawSnowflake(x,y,size,angle){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(angle);
+    ctx.strokeStyle="white";
+    ctx.lineWidth=1.5;
+
+    for(let i=0;i<6;i++){
+        ctx.rotate(Math.PI/3);
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(0,size);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0,size*0.6);
+        ctx.lineTo(size*0.15,size*0.75);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0,size*0.6);
+        ctx.lineTo(-size*0.15,size*0.75);
+        ctx.stroke();
+    }
+    ctx.restore();
 }
 
 function drawSnow(){
-  ctx.clearRect(0,0,w,h);
-  flakes.forEach(f=>{
-    drawSnowflake(f.x,f.y,f.size,f.angle);
-    f.y+=f.speed;
-    f.angle+=.002;
-    if(f.y>h){f.y=-20;f.x=Math.random()*w}
-  });
+    ctx.clearRect(0,0,w,h);
+    for(let f of flakes){
+        drawSnowflake(f.x,f.y,f.size,f.angle);
+        f.y+=f.speed;
+        f.angle+=0.002;
+        if(f.y>h){
+            f.y=-20;
+            f.x=Math.random()*w;
+        }
+    }
 }
+
 setInterval(drawSnow,30);
-onresize=()=>{w=canvas.width=innerWidth;h=canvas.height=innerHeight}
+window.onresize=()=>{
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+};
 </script>
 
 </body>
